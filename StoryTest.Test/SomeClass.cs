@@ -1,7 +1,7 @@
 
 namespace StoryTest.Test
 {
-    class SomeTarget
+    class SomeClass
     {
         public int Number
         {

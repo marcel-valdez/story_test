@@ -8,8 +8,8 @@ namespace StoryTest.Test
         [Test]
         public void TestIfItCanDefineAStory()
         {
-            // Arrange
-            var begin = Story.With(new SomeTarget());
+            // Arrange            
+            var begin = Story.With(actor: new SomeClass());
 
             begin.Act(actor => {
                 actor.Number = 0;
@@ -35,7 +35,7 @@ namespace StoryTest.Test
         public void TestIfItCanFailAStory()
         {
             // Arrange
-            var begin = Story.With(new SomeTarget());
+            var begin = Story.With(new SomeClass());
 
             begin.Act(actor => {
                 actor.Number = 0;

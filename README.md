@@ -8,28 +8,38 @@ I was fooling around and figured a tool like this would be fun to use.
 Sample Usage
 ============
 ````csharp
-[Test]
-public void TestIfItWorksCorrectly()
+using NUnit.Framework;
+using StoryTest;
+
+namespace SomeNamespace.Test
 {
-    // Arrange
-    var begin = Story.Target(new SomeTarget());
+    [TestFixture]
+    public class AcceptanceTest
+    {
+        [Test]
+        public void TestIfItCanDefineAStory()
+        {
+            // Arrange
+            var begin = Story.With(new SomeTarget());
 
-    begin.Act(story => {
-        story.Actor.Number = 0;
+            begin.Act(actor => {
+                actor.Number = 0;
 
-        Assert.That(story.Actor.Number, Is.EqualTo(0));
+                Assert.That(actor.Number, Is.EqualTo(0));
 
-        Next.Act(() => {
-            story.Actor.PlusOne();
+                Next.Act(() => {
+                    actor.PlusOne();
 
-            Assert.That(story.Actor.Number, Is.EqualTo(1));
+                    Assert.That(actor.Number, Is.EqualTo(1));
 
-            Next.Act(() => {
-                story.Actor.MinusOne();
+                    Next.Act(() => {
+                        actor.MinusOne();
 
-                Assert.That(story.Actor.Number, Is.EqualTo(0));
+                        Assert.That(actor.Number, Is.EqualTo(0));
+                    });
+                });
             });
-        });
-    });
+        }
+    }
 }
 ````

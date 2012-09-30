@@ -9,22 +9,22 @@ namespace StoryTest.Test
         public void TestIfItCanDefineAStory()
         {
             // Arrange
-            var begin = Story.Target(new SomeTarget());
+            var begin = Story.With(new SomeTarget());
 
-            begin.Act(story => {
-                story.Actor.Number = 0;
+            begin.Act(actor => {
+                actor.Number = 0;
 
-                Assert.That(story.Actor.Number, Is.EqualTo(0));
+                Assert.That(actor.Number, Is.EqualTo(0));
 
                 Next.Act(() => {
-                    story.Actor.PlusOne();
+                    actor.PlusOne();
 
-                    Assert.That(story.Actor.Number, Is.EqualTo(1));
+                    Assert.That(actor.Number, Is.EqualTo(1));
 
                     Next.Act(() => {
-                        story.Actor.MinusOne();
+                        actor.MinusOne();
 
-                        Assert.That(story.Actor.Number, Is.EqualTo(0));
+                        Assert.That(actor.Number, Is.EqualTo(0));
                     });
                 });
             });
@@ -35,12 +35,12 @@ namespace StoryTest.Test
         public void TestIfItCanFailAStory()
         {
             // Arrange
-            var begin = Story.Target(new SomeTarget());
+            var begin = Story.With(new SomeTarget());
 
-            begin.Act(story => {
-                story.Actor.Number = 0;
+            begin.Act(actor => {
+                actor.Number = 0;
 
-                Assert.That(story.Actor.Number, Is.EqualTo(1));
+                Assert.That(actor.Number, Is.EqualTo(1));
             });
         }
     }

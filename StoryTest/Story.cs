@@ -4,11 +4,11 @@ namespace StoryTest
 {
     public static class Story
     {
-        public static Story<T> Target<T>(T target)
+        public static Story<T> With<T>(T actor)
         {
             return new Story<T>()
             {
-                Actor = target
+                Actor = actor
             };
         }
     }
@@ -20,11 +20,11 @@ namespace StoryTest
 
         }
 
-        public void Act(Action<Story<T>> act)
+        public void Act(Action<T> act)
         {
             try
             {
-                act(this);
+                act(this.Actor);
             }
             catch
             {
@@ -32,7 +32,7 @@ namespace StoryTest
             }
         }
 
-        public T Actor
+        internal T Actor
         {
             get;
             set;

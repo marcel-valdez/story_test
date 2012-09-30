@@ -1,7 +1,7 @@
 StoryTest
 ==========
 
-A very simple API to define tests with stories, acts and actors in NUnit.  
+A very simple API to define tests with stories, acts and actors in any testing framework.  
   
 I was fooling around and figured a tool like this would be fun to use.  
 

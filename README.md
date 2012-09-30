@@ -20,7 +20,7 @@ namespace SomeNamespace.Test
         public void TestIfItCanDefineAStory()
         {
             // Arrange
-            var begin = Story.With(new SomeTarget());
+            var begin = Story.With(actor: new SomeClass());
 
             begin.Act(actor => {
                 actor.Number = 0;
